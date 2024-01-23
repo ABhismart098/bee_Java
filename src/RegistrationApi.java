@@ -9,7 +9,7 @@ public class RegistrationApi {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/bbe";
 
     // MySQL username
-    private static final String USERNAME = "locahost";
+    private static final String USERNAME = "localhost"; // Replace with your MySQL username
 
     // MySQL password
     private static final String PASSWORD = "9899803387Ak@";
@@ -18,6 +18,13 @@ public class RegistrationApi {
     private static final String INSERT_USER_SQL = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
 
     public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return; // Exit the program if the driver is not found
+        }
+
         // Sample registration data
         String username = "john_doe";
         String password = "secure_password";
